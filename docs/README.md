@@ -7,7 +7,7 @@
 - [x] BaseballGameInput 구현 (View - input)
 - [x] BaseballGameOutput 구현 (view- output)
 - [x] BaseballGameDealer 구현 (Controller)
-    - [ ] private BaseballGame
+    - [x] private BaseballGame
     - [x] start(): void
 - [x] ThreeDigits 구현 (VO?)
     - 생성자: 세 자리의 숫자를 입력받아 객체화
