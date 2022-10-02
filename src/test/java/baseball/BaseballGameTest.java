@@ -50,12 +50,7 @@ public class BaseballGameTest {
     void nothingTest() {
         UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
         BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
-        List<Integer> unusedNumberList = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
-            if (targetThreeDigits.getDigit1st() == i || targetThreeDigits.getDigit2nd() == i || targetThreeDigits.getDigit3rd() == i) continue;
-            unusedNumberList.add(i);
-        }
-        ThreeDigits inputThreeDigits = new ThreeDigits(Randoms.pickNumberInList(unusedNumberList), Randoms.pickNumberInList(unusedNumberList), Randoms.pickNumberInList(unusedNumberList));
+        ThreeDigits inputThreeDigits = new ThreeDigits(this.pickRandomUnusedNumber(targetThreeDigits), this.pickRandomUnusedNumber(targetThreeDigits), this.pickRandomUnusedNumber(targetThreeDigits));
         BaseballGameResult result = baseballGame.compare(inputThreeDigits);
         assertEquals(result.getStrikes(), 0);
         assertEquals(result.getBalls(), 0);
@@ -73,5 +68,14 @@ public class BaseballGameTest {
         assertEquals(result.getBalls(), 0);
         assertFalse(result.isNothing());
         assertTrue(result.isWin());
+    }
+
+    private int pickRandomUnusedNumber(ThreeDigits threeDigits) {
+        List<Integer> unusedNumberList = new ArrayList<>();
+        for (int i = 1; i <= 9; i++) {
+            if (threeDigits.getDigit1st() == i || threeDigits.getDigit2nd() == i || threeDigits.getDigit3rd() == i) continue;
+            unusedNumberList.add(i);
+        }
+        return Randoms.pickNumberInList(unusedNumberList);
     }
 }
