@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.digits.ThreeDigits;
 import camp.nextstep.edu.missionutils.Console;
 
 public class BaseballGameInput {

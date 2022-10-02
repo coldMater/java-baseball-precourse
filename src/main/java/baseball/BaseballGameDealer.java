@@ -1,8 +1,7 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.List;
+import baseball.digits.ThreeDigits;
+import baseball.digits.UniqueThreeDigits;
 
 public class BaseballGameDealer {
     BaseballGame baseballGame;
@@ -25,8 +24,7 @@ public class BaseballGameDealer {
     }
 
     private void setNewGame() {
-        List<Integer> numList = Randoms.pickUniqueNumbersInRange(1, 9, 3);
-        this.baseballGame = new BaseballGame(numList.get(0), numList.get(1), numList.get(2));
+        this.baseballGame = new BaseballGame(new UniqueThreeDigits());
         // System.out.printf("Debug Only Target Number:  %d%d%d%s", numList.get(0), numList.get(1), numList.get(2), System.lineSeparator());
     }
 

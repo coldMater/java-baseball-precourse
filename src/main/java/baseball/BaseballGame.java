@@ -1,10 +1,13 @@
 package baseball;
 
-public class BaseballGame {
-    private ThreeDigits targetThreeDigits;
+import baseball.digits.ThreeDigits;
+import baseball.digits.UniqueThreeDigits;
 
-    BaseballGame(int digit1st, int digit2nd, int digit3rd) {
-        this.targetThreeDigits = new ThreeDigits(digit1st, digit2nd, digit3rd);
+public class BaseballGame {
+    private UniqueThreeDigits targetThreeDigits;
+
+    BaseballGame(UniqueThreeDigits threeDigits) {
+        this.targetThreeDigits = threeDigits;
     }
 
     BaseballGameResult compare(ThreeDigits inputDigits) {
@@ -13,17 +16,18 @@ public class BaseballGame {
 
     private int countStrikes(ThreeDigits inputDigits) {
         int strikes = 0;
-        if (this.targetThreeDigits.digit1st == inputDigits.digit1st) strikes++;
-        if (this.targetThreeDigits.digit2nd == inputDigits.digit2nd) strikes++;
-        if (this.targetThreeDigits.digit3rd == inputDigits.digit3rd) strikes++;
+        if (this.targetThreeDigits.getDigit1st() == inputDigits.getDigit1st()) strikes++;
+        if (this.targetThreeDigits.getDigit2nd() == inputDigits.getDigit2nd()) strikes++;
+        if (this.targetThreeDigits.getDigit3rd() == inputDigits.getDigit3rd()) strikes++;
         return strikes;
     }
 
     private int countBalls(ThreeDigits inputDigits) {
         int balls = 0;
-        if (this.targetThreeDigits.digit1st == inputDigits.digit2nd || this.targetThreeDigits.digit1st == inputDigits.digit3rd) balls++;
-        if (this.targetThreeDigits.digit2nd == inputDigits.digit1st || this.targetThreeDigits.digit2nd == inputDigits.digit3rd) balls++;
-        if (this.targetThreeDigits.digit3rd == inputDigits.digit1st || this.targetThreeDigits.digit3rd == inputDigits.digit2nd) balls++;
+
+        if (inputDigits.getDigit1st() == targetThreeDigits.getDigit2nd() || inputDigits.getDigit1st() == targetThreeDigits.getDigit3rd()) balls++;
+        if (inputDigits.getDigit2nd() == targetThreeDigits.getDigit1st() || inputDigits.getDigit2nd() == targetThreeDigits.getDigit3rd()) balls++;
+        if (inputDigits.getDigit3rd() == targetThreeDigits.getDigit1st() || inputDigits.getDigit3rd() == targetThreeDigits.getDigit2nd()) balls++;
         return balls;
     }
 }
