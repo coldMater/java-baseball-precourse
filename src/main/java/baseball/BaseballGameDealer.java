@@ -5,6 +5,7 @@ import baseball.digits.UniqueThreeDigits;
 
 public class BaseballGameDealer {
     BaseballGame baseballGame;
+
     public void start() {
         do {
             this.runOneGame();
@@ -13,7 +14,7 @@ public class BaseballGameDealer {
 
     private void runOneGame() {
         setNewGame();
-        boolean isWin= false;
+        boolean isWin = false;
         while (!isWin) {
             ThreeDigits td = readDigits();
             BaseballGameResult result = this.baseballGame.compare(td);

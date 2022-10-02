@@ -85,7 +85,8 @@ public class BaseballGameTest {
     private int pickRandomUnusedNumber(ThreeDigits threeDigits) {
         List<Integer> unusedNumberList = new ArrayList<>();
         for (int i = 1; i <= 9; i++) {
-            if (threeDigits.getDigit1st() == i || threeDigits.getDigit2nd() == i || threeDigits.getDigit3rd() == i) continue;
+            if (threeDigits.getDigit1st() == i || threeDigits.getDigit2nd() == i || threeDigits.getDigit3rd() == i)
+                continue;
             unusedNumberList.add(i);
         }
         return Randoms.pickNumberInList(unusedNumberList);
