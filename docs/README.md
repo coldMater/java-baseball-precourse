@@ -4,12 +4,12 @@
     - 생성자: 인자 없음, targetThreeDigits 에 맞춰야하는 세자리의 수(ThreeDigits) 생성
     - private targetThreeDigits: ThreeDigits
     - compare(other ThreeDigits): BaseballGameResult
-- [ ] BaseballGameInput 구현 (View - input)
-- [ ] BaseballGameOutput 구현 (view- output)
-- [ ] BaseballGameDealer 구현 (Controller)
-    - private BaseballGame
-    - start(): void
-- [ ] ThreeDigits 구현 (VO?)
+- [x] BaseballGameInput 구현 (View - input)
+- [x] BaseballGameOutput 구현 (view- output)
+- [x] BaseballGameDealer 구현 (Controller)
+    - [ ] private BaseballGame
+    - [x] start(): void
+- [x] ThreeDigits 구현 (VO?)
     - 생성자: 세 자리의 숫자를 입력받아 객체화
     - 멤버변수: int digitFirst, int digitSecond, int digitThird
     - equals(ThreeDigits otherThreeDigits): boolean 오버라이드
