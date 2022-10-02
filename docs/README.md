@@ -1,7 +1,7 @@
 # 구현할 기능 목록
 ## 기능 요구사항
-- [ ] BaseballGame 구현 (Model)
-    - 생성자: 인자 없음, targetThreeDigits 에 맞춰야하는 세자리의 수(ThreeDigits) 생성
+- [x] BaseballGame 구현 (Model)
+    - 생성자: 세 수를 받아 targetThreeDigits 에 맞춰야하는 세자리의 수(ThreeDigits) 생성
     - private targetThreeDigits: ThreeDigits
     - compare(other ThreeDigits): BaseballGameResult
 - [x] BaseballGameInput 구현 (View - input)
@@ -14,9 +14,10 @@
     - 멤버변수: int digitFirst, int digitSecond, int digitThird
     - equals(ThreeDigits otherThreeDigits): boolean 오버라이드
     - hashCode(): int 오버라이드
-- [ ] BaseballGameResult 구현 (DTO?)
-    - 생성자: (int strike, int ball, int nothing) 카운트
+- [x] BaseballGameResult 구현 (DTO?)
+    - 생성자: (int strike, int ball) 카운트
     - 각 멤버변수는 getter 만 가짐
+    - Nothing 임을 알 수 있는 isNothing() 함수
 ## 프로그래밍 요구사항
 ### 제약사항1
 - [ ] JDK8 동작 확인
