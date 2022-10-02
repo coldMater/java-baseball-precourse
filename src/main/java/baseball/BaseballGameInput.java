@@ -12,6 +12,13 @@ public class BaseballGameInput {
         }
     }
 
+    public static boolean readRestartGame() {
+        String input = Console.readLine();
+        if ("1".equals(input)) return true;
+        if ("2".equals(input)) return false;
+        throw new IllegalArgumentException();
+    }
+
     public static ThreeDigits getThreeDigitsFrom(String digits) {
         int parsedDigits = Integer.parseInt(digits);
         if (!(parsedDigits >= 111 && parsedDigits <= 999)) throw new IllegalArgumentException();
