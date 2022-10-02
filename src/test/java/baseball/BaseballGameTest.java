@@ -47,6 +47,18 @@ public class BaseballGameTest {
     }
 
     @Test
+    void countTest4() {
+        UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
+        BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
+        ThreeDigits inputThreeDigits = new ThreeDigits(this.pickRandomUnusedNumber(targetThreeDigits), this.pickRandomUnusedNumber(targetThreeDigits), targetThreeDigits.getDigit1st());
+        BaseballGameResult result = baseballGame.compare(inputThreeDigits);
+        assertEquals(result.getStrikes(), 0);
+        assertEquals(result.getBalls(), 1);
+        assertFalse(result.isNothing());
+        assertFalse(result.isWin());
+    }
+
+    @Test
     void nothingTest() {
         UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
         BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
