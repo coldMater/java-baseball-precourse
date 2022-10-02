@@ -11,8 +11,7 @@ import java.util.List;
 
 public class BaseballGameTest {
     @Test
-    void compareTest() {
-        // Ball Count Test
+    void countTest1() {
         UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
         BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
         ThreeDigits inputThreeDigits = new ThreeDigits(targetThreeDigits.getDigit1st(), targetThreeDigits.getDigit1st(), targetThreeDigits.getDigit1st());
@@ -21,41 +20,58 @@ public class BaseballGameTest {
         assertEquals(result.getBalls(), 2);
         assertFalse(result.isNothing());
         assertFalse(result.isWin());
+    }
 
-        // Strike Count Test
-        UniqueThreeDigits targetThreeDigits2 = new UniqueThreeDigits();
-        BaseballGame baseballGame2 = new BaseballGame(targetThreeDigits2);
-        ThreeDigits inputThreeDigits2 = new ThreeDigits(targetThreeDigits2.getDigit1st(), targetThreeDigits2.getDigit1st(), targetThreeDigits2.getDigit3rd());
-        BaseballGameResult result2 = baseballGame2.compare(inputThreeDigits2);
-        assertEquals(result2.getStrikes(), 2);
-        assertEquals(result2.getBalls(), 1);
-        assertFalse(result2.isNothing());
-        assertFalse(result2.isWin());
+    @Test
+    void countTest2() {
+        UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
+        BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
+        ThreeDigits inputThreeDigits = new ThreeDigits(targetThreeDigits.getDigit1st(), targetThreeDigits.getDigit1st(), targetThreeDigits.getDigit3rd());
+        BaseballGameResult result = baseballGame.compare(inputThreeDigits);
+        assertEquals(result.getStrikes(), 2);
+        assertEquals(result.getBalls(), 1);
+        assertFalse(result.isNothing());
+        assertFalse(result.isWin());
+    }
 
-        // Nothing Test
-        UniqueThreeDigits targetThreeDigits3 = new UniqueThreeDigits();
-        BaseballGame baseballGame3 = new BaseballGame(targetThreeDigits3);
+    @Test
+    void countTest3() {
+        UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
+        BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
+        ThreeDigits inputThreeDigits = new ThreeDigits(targetThreeDigits.getDigit2nd(), targetThreeDigits.getDigit3rd(), targetThreeDigits.getDigit1st());
+        BaseballGameResult result = baseballGame.compare(inputThreeDigits);
+        assertEquals(result.getStrikes(), 0);
+        assertEquals(result.getBalls(), 3);
+        assertFalse(result.isNothing());
+        assertFalse(result.isWin());
+    }
+
+    @Test
+    void nothingTest() {
+        UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
+        BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
         List<Integer> unusedNumberList = new ArrayList<>();
         for (int i = 1; i <= 9; i++) {
-            if (targetThreeDigits3.getDigit1st() == i || targetThreeDigits3.getDigit2nd() == i || targetThreeDigits3.getDigit3rd() == i)
-                continue;
+            if (targetThreeDigits.getDigit1st() == i || targetThreeDigits.getDigit2nd() == i || targetThreeDigits.getDigit3rd() == i) continue;
             unusedNumberList.add(i);
         }
-        ThreeDigits inputThreeDigits3 = new ThreeDigits(Randoms.pickNumberInList(unusedNumberList), Randoms.pickNumberInList(unusedNumberList), Randoms.pickNumberInList(unusedNumberList));
-        BaseballGameResult result3 = baseballGame3.compare(inputThreeDigits3);
-        assertEquals(result3.getStrikes(), 0);
-        assertEquals(result3.getBalls(), 0);
-        assertTrue(result3.isNothing());
-        assertFalse(result3.isWin());
+        ThreeDigits inputThreeDigits = new ThreeDigits(Randoms.pickNumberInList(unusedNumberList), Randoms.pickNumberInList(unusedNumberList), Randoms.pickNumberInList(unusedNumberList));
+        BaseballGameResult result = baseballGame.compare(inputThreeDigits);
+        assertEquals(result.getStrikes(), 0);
+        assertEquals(result.getBalls(), 0);
+        assertTrue(result.isNothing());
+        assertFalse(result.isWin());
+    }
 
-        // Win Test
-        UniqueThreeDigits targetThreeDigits4 = new UniqueThreeDigits();
-        BaseballGame baseballGame4 = new BaseballGame(targetThreeDigits4);
-        ThreeDigits inputThreeDigits4 = new ThreeDigits(targetThreeDigits4.getDigit1st(), targetThreeDigits4.getDigit2nd(), targetThreeDigits4.getDigit3rd());
-        BaseballGameResult result4 = baseballGame4.compare(inputThreeDigits4);
-        assertEquals(result4.getStrikes(), 3);
-        assertEquals(result4.getBalls(), 0);
-        assertFalse(result4.isNothing());
-        assertTrue(result4.isWin());
+    @Test
+    void winTest() {
+        UniqueThreeDigits targetThreeDigits = new UniqueThreeDigits();
+        BaseballGame baseballGame = new BaseballGame(targetThreeDigits);
+        ThreeDigits inputThreeDigits = new ThreeDigits(targetThreeDigits.getDigit1st(), targetThreeDigits.getDigit2nd(), targetThreeDigits.getDigit3rd());
+        BaseballGameResult result = baseballGame.compare(inputThreeDigits);
+        assertEquals(result.getStrikes(), 3);
+        assertEquals(result.getBalls(), 0);
+        assertFalse(result.isNothing());
+        assertTrue(result.isWin());
     }
 }
