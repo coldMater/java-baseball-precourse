@@ -14,15 +14,14 @@ public class BaseballGameDealer {
 
     private void runOneGame() {
         setNewGame();
-        while (true) {
+        boolean isWin= false;
+        while (!isWin) {
             ThreeDigits td = readDigits();
             BaseballGameResult result = this.baseballGame.compare(td);
             BaseballGameOutput.printOneResult(result);
-            if (result.isWin()) {
-                BaseballGameOutput.printYouWin();
-                break;
-            }
+            isWin = result.isWin();
         }
+        BaseballGameOutput.printYouWin();
     }
 
     private void setNewGame() {
